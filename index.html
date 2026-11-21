@@ -40,35 +40,22 @@ nav.scrolled{background:rgba(14,12,10,.78);backdrop-filter:blur(14px);padding:.9
 .links a:hover::after{transform:scaleX(1);transform-origin:left}
 nav .btn{padding:.75rem 1.3rem}
 
-/* hero — pinned expanding frame */
-.hero{position:relative;height:340vh}
-.hero-pin{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden}
-.hero-media{position:absolute;inset:0;z-index:2;clip-path:inset(var(--it,14%) var(--is,38%) var(--it,14%) var(--is,38%) round var(--r,4px));will-change:clip-path}
-.hero-media img{object-position:50% 18%;transform:scale(var(--s,1.08));transform-origin:50% 30%;will-change:transform}
-.hero-shade{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:var(--sh,0);background:linear-gradient(180deg,rgba(14,12,10,.55) 0%,rgba(14,12,10,.05) 35%,rgba(14,12,10,.25) 60%,rgba(14,12,10,.92) 100%)}
-.hero-title{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;mix-blend-mode:difference}
-.hero-title span{font-family:var(--serif);font-size:clamp(3rem,10.5vw,11rem);line-height:.95;white-space:nowrap;color:#f4eee4;will-change:transform}
-.hero-title .wl{margin-right:16vw;transform:translateX(calc(var(--tx,0) * -1))}
-.hero-title .wr{margin-left:16vw;font-style:italic;transform:translateX(var(--tx,0))}
-.hero-title .in{display:inline-block;transform:translateY(110%);animation:rise 1.4s var(--ease) forwards}
-.hero-title .wr .in{animation-delay:.15s}
-.hero-title .clipw{display:inline-block;overflow:hidden;opacity:var(--to,1)}
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.hero-media{position:absolute;inset:0;will-change:transform}
+.hero-media img{object-position:50% 30%;transform:scale(1.15);animation:heroIn 2.4s var(--ease) forwards}
+@keyframes heroIn{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,10,.55) 0%,rgba(14,12,10,.05) 35%,rgba(14,12,10,.2) 60%,rgba(14,12,10,.92) 100%)}
+.hero-content{position:absolute;z-index:2;left:4vw;right:4vw;bottom:9vh;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero h1{font-size:clamp(3.4rem,10vw,9.5rem);max-width:11ch}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(105%);animation:rise 1.4s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
 @keyframes rise{to{transform:none}}
-.floater{position:absolute;z-index:1;width:clamp(110px,13vw,210px);aspect-ratio:3/4;overflow:hidden;opacity:var(--fo,1);will-change:transform;box-shadow:0 30px 60px rgba(0,0,0,.45)}
-.floater img{animation:fade 1.6s .4s var(--ease) both}
-.f1{left:9%;top:14%;transform:translate(calc(var(--fx,0) * -1),calc(var(--fy,0) * -1)) rotate(-6deg)}
-.f2{right:9%;top:12%;transform:translate(var(--fx,0),calc(var(--fy,0) * -1)) rotate(5deg)}
-.f3{left:13%;bottom:10%;transform:translate(calc(var(--fx,0) * -1),var(--fy,0)) rotate(4deg)}
-.f4{right:12%;bottom:12%;transform:translate(var(--fx,0),var(--fy,0)) rotate(-5deg)}
-.hero-intro{position:absolute;z-index:4;left:0;right:0;top:10vh;text-align:center;opacity:var(--io,1)}
-.hero-intro .eyebrow{animation:fade 1.2s .6s var(--ease) both}
-.hero-content{position:absolute;z-index:5;left:4vw;right:4vw;bottom:9vh;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;opacity:var(--co,0);transform:translateY(calc((1 - var(--co,0)) * 40px));pointer-events:none}
-.hero-content.live{pointer-events:auto}
-.hero-content h1{font-size:clamp(3rem,8vw,7.5rem);max-width:11ch}
-.hero-side{max-width:340px}
+.hero-side{max-width:320px;opacity:0;animation:fade 1.2s .8s var(--ease) forwards}
 .hero-side p{color:#ddd5c7;font-size:.95rem;margin:1rem 0 1.6rem}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.scroll-cue{position:absolute;z-index:5;opacity:var(--io,1);left:50%;bottom:2.2rem;transform:translateX(-50%);width:1px;height:56px;background:var(--line);overflow:hidden}
+@keyframes fade{to{opacity:1}}
+.scroll-cue{position:absolute;z-index:2;left:50%;bottom:2.2rem;transform:translateX(-50%);width:1px;height:56px;background:var(--line);overflow:hidden}
 .scroll-cue::after{content:"";position:absolute;inset:0;background:var(--gold);animation:cue 2.2s infinite var(--ease)}
 @keyframes cue{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
 
@@ -188,8 +175,6 @@ footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
 @media (max-width:900px){
   .links{display:none}
   .hero-content{flex-direction:column;align-items:flex-start}
-  .hero-title span{font-size:15vw}.hero-title .wl{margin-right:12vw}.hero-title .wr{margin-left:12vw}.hero-media{clip-path:inset(var(--it,22%) var(--is,20%) var(--it,22%) var(--is,20%) round var(--r,4px))}
-  .floater{width:24vw}.f1{left:3%;top:19%}.f2{right:3%;top:17%}.hero-intro{top:11vh;padding:0 8vw}.f3{left:4%;bottom:9%}.f4{right:4%;bottom:10%}
   .stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:1.6rem 0}
   .sec-head{flex-direction:column;align-items:flex-start}
   .cards{grid-template-columns:1fr}.card:nth-child(2){margin-top:0}
@@ -206,8 +191,39 @@ footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}.clip>*{clip-path:none!important}
-  .clip img{transform:none}
-  .hero{height:100svh}.hero-media{clip-path:none}.hero-media img{transform:none}.floater,.hero-title,.hero-intro{display:none}.hero-content{opacity:1;transform:none;pointer-events:auto}.hero-shade{opacity:1}.statement .w{opacity:1}
+  .hero h1 .line span,.clip img,.hero-media img{transform:none}
+  .hero-side{opacity:1}.statement .w{opacity:1}
+}
+
+/* expanding frame section */
+.xf{position:relative;height:340vh}
+.xf-pin{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden}
+.xf-media{position:absolute;inset:0;z-index:2;clip-path:inset(var(--it,14%) var(--is,38%) var(--it,14%) var(--is,38%) round var(--r,4px));will-change:clip-path}
+.xf-media img{object-position:50% 20%;transform:scale(var(--s,1.08));will-change:transform}
+.xf-shade{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:var(--sh,0);background:linear-gradient(180deg,rgba(14,12,10,.45) 0%,rgba(14,12,10,.05) 40%,rgba(14,12,10,.85) 100%)}
+.xf-title{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;mix-blend-mode:difference;opacity:var(--to,1)}
+.xf-title span{font-family:var(--serif);font-size:clamp(3rem,10.5vw,11rem);line-height:.95;white-space:nowrap;color:#f4eee4;will-change:transform}
+.xf-title .wl{margin-right:16vw;transform:translateX(calc(var(--tx,0vw) * -1))}
+.xf-title .wr{margin-left:16vw;font-style:italic;transform:translateX(var(--tx,0vw))}
+.floater{position:absolute;z-index:1;width:clamp(110px,13vw,210px);aspect-ratio:3/4;overflow:hidden;opacity:var(--fo,1);will-change:transform;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.f1{left:9%;top:14%;transform:translate(calc(var(--fx,0vw) * -1),calc(var(--fy,0vh) * -1)) rotate(-6deg)}
+.f2{right:9%;top:12%;transform:translate(var(--fx,0vw),calc(var(--fy,0vh) * -1)) rotate(5deg)}
+.f3{left:13%;bottom:10%;transform:translate(calc(var(--fx,0vw) * -1),var(--fy,0vh)) rotate(4deg)}
+.f4{right:12%;bottom:12%;transform:translate(var(--fx,0vw),var(--fy,0vh)) rotate(-5deg)}
+.xf-intro{position:absolute;z-index:4;left:0;right:0;top:10vh;text-align:center;opacity:var(--io,1)}
+.xf-content{position:absolute;z-index:5;left:4vw;right:4vw;bottom:9vh;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;opacity:var(--co,0);transform:translateY(calc((1 - var(--co,0)) * 40px));pointer-events:none}
+.xf-content.live{pointer-events:auto}
+.xf-content h2{font-size:clamp(2.6rem,6vw,5.6rem);max-width:12ch}
+.xf-content p{color:#ddd5c7;max-width:36ch;margin-bottom:1.4rem}
+@media (max-width:900px){
+  .xf-media{clip-path:inset(var(--it,22%) var(--is,20%) var(--it,22%) var(--is,20%) round var(--r,4px))}
+  .xf-title span{font-size:12vw}.xf-title .wl{margin-right:6vw}.xf-title .wr{margin-left:6vw}
+  .floater{width:24vw}.f1{left:3%;top:19%}.f2{right:3%;top:17%}.f3{left:4%;bottom:9%}.f4{right:4%;bottom:10%}
+  .xf-intro{top:11vh;padding:0 8vw}
+  .xf-content{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .xf{height:auto}.xf-pin{position:relative}.xf-media{clip-path:none}.floater,.xf-title,.xf-intro{display:none}.xf-content{opacity:1;transform:none;pointer-events:auto}.xf-shade{opacity:1}
 }
 </style>
 </head>
@@ -226,25 +242,16 @@ footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-pin" id="heroPin">
-    <figure class="floater f1"><img src="img/02.jpg" alt=""></figure>
-    <figure class="floater f2"><img src="img/20.jpg" alt=""></figure>
-    <figure class="floater f3"><img src="img/13.jpg" alt=""></figure>
-    <figure class="floater f4"><img src="img/06.jpg" alt=""></figure>
-    <div class="hero-media" id="heroMedia"><img src="img/15.jpg" alt="Bride under her veil at sunset on a Florida beach"></div>
-    <div class="hero-shade"></div>
-    <div class="hero-intro"><span class="eyebrow">Luxury Wedding &amp; Quinceañera Photography · Florida</span></div>
-    <div class="hero-title" aria-hidden="true"><span class="wl"><span class="clipw"><span class="in">Elegance,</span></span></span><span class="wr"><span class="clipw"><span class="in">remembered.</span></span></span></div>
-    <div class="hero-content" id="heroContent">
-      <h1>Elegance, <em>remembered.</em></h1>
-      <div class="hero-side">
-        <span class="eyebrow">Florida &amp; Destination</span>
-        <p>Luxury wedding, quinceañera and portrait photography, crafted over 20 years behind the lens.</p>
-        <a href="#contact" class="btn solid">Reserve your date →</a>
-      </div>
+  <div class="hero-media" id="heroMedia"><img src="img/15.jpg" alt="Bride under her veil at sunset on a Florida beach"></div>
+  <div class="hero-content">
+    <h1><span class="line"><span>Elegance,</span></span><span class="line"><span><em>remembered.</em></span></span></h1>
+    <div class="hero-side">
+      <span class="eyebrow">Florida &amp; Destination</span>
+      <p>Luxury wedding, quinceañera and portrait photography, crafted over 20 years behind the lens.</p>
+      <a href="#contact" class="btn solid">Reserve your date →</a>
     </div>
-    <div class="scroll-cue"></div>
   </div>
+  <div class="scroll-cue"></div>
 </header>
 
 <section class="intro wrap">
@@ -254,6 +261,26 @@ footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
     <div class="stat reveal"><b><span class="count" data-to="20">0</span>+</b><span>Years of experience</span></div>
     <div class="stat reveal d1"><b><span class="count" data-to="12">0</span>K+</b><span>Moments shared</span></div>
     <div class="stat reveal d2"><b>FL</b><span>&amp; destination weddings</span></div>
+  </div>
+</section>
+
+<section class="xf" id="frame">
+  <div class="xf-pin" id="xfPin">
+    <figure class="floater f1"><img src="img/02.jpg" alt=""></figure>
+    <figure class="floater f2"><img src="img/20.jpg" alt=""></figure>
+    <figure class="floater f3"><img src="img/16.jpg" alt=""></figure>
+    <figure class="floater f4"><img src="img/06.jpg" alt=""></figure>
+    <div class="xf-media"><img src="img/13.jpg" alt="Newlyweds watching the sunset over the Gulf"></div>
+    <div class="xf-shade"></div>
+    <div class="xf-intro"><span class="eyebrow">Keep scrolling</span></div>
+    <div class="xf-title" aria-hidden="true"><span class="wl">Every moment,</span><span class="wr">full frame.</span></div>
+    <div class="xf-content" id="xfContent">
+      <h2>Every moment, <em>full frame.</em></h2>
+      <div>
+        <p>Gulf Coast sunsets, garden estates and destination celebrations. Wherever your story happens, it's captured in full.</p>
+        <a href="#gallery" class="btn">View the portfolio →</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -431,45 +458,39 @@ footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
   document.querySelectorAll('.q-img').forEach(el=>qio.observe(el));
 
   const nav=document.getElementById('nav'), prog=document.getElementById('progress');
-  const heroSec=document.getElementById('top'), heroPin=document.getElementById('heroPin'), heroContent=document.getElementById('heroContent'), cta=document.getElementById('ctaBg');
+  const hero=document.getElementById('heroMedia'), cta=document.getElementById('ctaBg');
   const hs=document.querySelector('.hscroll'), track=document.getElementById('htrack'), hcount=document.getElementById('hcount');
   const hitems=[...track.children];
   const pars=[...document.querySelectorAll('.par')];
+  const xf=document.getElementById('frame'), xfPin=document.getElementById('xfPin'), xfContent=document.getElementById('xfContent');
 
   function frame(){
     const y=scrollY, vh=innerHeight, max=document.documentElement.scrollHeight-vh;
     nav.classList.toggle('scrolled', y>60);
     prog.style.transform=`scaleX(${max?y/max:0})`;
     if(reduce) return;
-    // hero: expanding frame
-    const hb=heroSec.getBoundingClientRect();
-    if(hb.bottom>0){
-      const hp=Math.min(Math.max(-hb.top/(hb.height-vh),0),1);
-      const ease=x=>1-Math.pow(1-x,3);
-      const ex=ease(Math.min(hp/.62,1));            // frame expansion 0→62%
-      const mob=innerWidth<900;
-      const it0=mob?22:14, is0=mob?20:38;
-      const S=heroPin.style;
-      S.setProperty('--it',(it0*(1-ex))+'%');
-      S.setProperty('--is',(is0*(1-ex))+'%');
-      S.setProperty('--r',(4*(1-ex))+'px');
-      S.setProperty('--s',(1.08-.08*ex).toFixed(4));
-      S.setProperty('--tx',(ex*55)+'vw');
-      S.setProperty('--to',Math.max(0,1-ex*1.4).toFixed(3));
-      S.setProperty('--fx',(ex*40)+'vw');
-      S.setProperty('--fy',(ex*30)+'vh');
-      S.setProperty('--fo',Math.max(0,1-ex*1.6).toFixed(3));
-      S.setProperty('--io',Math.max(0,1-hp*6).toFixed(3));
-      const co=Math.min(Math.max((hp-.6)/.25,0),1);
-      S.setProperty('--sh',Math.min(1,ex*1.1).toFixed(3));
-      S.setProperty('--co',co.toFixed(3));
-      heroContent.classList.toggle('live',co>.5);
-    }
+    // hero parallax
+    if(y<vh) hero.style.transform=`translateY(${y*.35}px)`;
     // statement words
     const r=st.getBoundingClientRect();
     const p=Math.min(Math.max((vh*.85-r.top)/(r.height+vh*.35),0),1);
     const n=Math.round(p*words.length);
     words.forEach((w,i)=>w.classList.toggle('on',i<n));
+    // expanding frame section
+    const xb=xf.getBoundingClientRect();
+    if(xb.top<vh&&xb.bottom>0){
+      const xp=Math.min(Math.max(-xb.top/(xb.height-vh),0),1);
+      const ex=1-Math.pow(1-Math.min(xp/.62,1),3);
+      const mob=innerWidth<900, it0=mob?22:14, is0=mob?20:38, S=xfPin.style;
+      S.setProperty('--it',(it0*(1-ex))+'%'); S.setProperty('--is',(is0*(1-ex))+'%');
+      S.setProperty('--r',(4*(1-ex))+'px'); S.setProperty('--s',(1.08-.08*ex).toFixed(4));
+      S.setProperty('--tx',(ex*55)+'vw'); S.setProperty('--to',Math.max(0,1-ex*1.4).toFixed(3));
+      S.setProperty('--fx',(ex*40)+'vw'); S.setProperty('--fy',(ex*30)+'vh');
+      S.setProperty('--fo',Math.max(0,1-ex*1.6).toFixed(3)); S.setProperty('--io',Math.max(0,1-xp*6).toFixed(3));
+      const co=Math.min(Math.max((xp-.6)/.25,0),1);
+      S.setProperty('--sh',Math.min(1,ex*1.1).toFixed(3)); S.setProperty('--co',co.toFixed(3));
+      xfContent.classList.toggle('live',co>.5);
+    }
     // horizontal gallery
     const hr=hs.getBoundingClientRect();
     const hp=Math.min(Math.max(-hr.top/(hr.height-vh),0),1);
