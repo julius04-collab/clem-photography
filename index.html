@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clem Photography — Luxury Wedding & Quinceañera Photography, Florida</title>
+<meta name="description" content="Luxury wedding, quinceañera and portrait photography across Florida and destination weddings. 20 years of experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e0c0a; --ink-2:#17140f; --ivory:#f4eee4; --muted:#a69d8f; --gold:#c9a36a; --line:rgba(244,238,228,.14);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1280px,92vw);margin:0 auto}
+.eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+em{font-style:italic;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 1.8rem;border:1px solid var(--gold);color:var(--ivory);font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:background .5s var(--ease),color .5s var(--ease)}
+.btn:hover{background:var(--gold);color:var(--ink)}
+.btn.solid{background:var(--gold);color:var(--ink)}
+.btn.solid:hover{background:var(--ivory)}
+
+/* progress + nav */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 4vw;transition:background .5s,padding .5s,backdrop-filter .5s}
+nav.scrolled{background:rgba(14,12,10,.78);backdrop-filter:blur(14px);padding:.9rem 4vw;border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:1.5rem;letter-spacing:.28em;text-transform:uppercase}
+.logo small{display:block;font-family:var(--sans);font-size:.55rem;letter-spacing:.42em;color:var(--muted);margin-top:-.2rem}
+.links{display:flex;gap:2.4rem;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase}
+.links a{position:relative;opacity:.85}
+.links a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.links a:hover::after{transform:scaleX(1);transform-origin:left}
+nav .btn{padding:.75rem 1.3rem}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.hero-media{position:absolute;inset:0;will-change:transform}
+.hero-media img{object-position:50% 30%;transform:scale(1.15);animation:heroIn 2.4s var(--ease) forwards}
+@keyframes heroIn{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,10,.55) 0%,rgba(14,12,10,.05) 35%,rgba(14,12,10,.2) 60%,rgba(14,12,10,.92) 100%)}
+.hero-content{position:absolute;z-index:2;left:4vw;right:4vw;bottom:9vh;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.hero h1{font-size:clamp(3.4rem,10vw,9.5rem);max-width:11ch}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(105%);animation:rise 1.4s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.15s}
+@keyframes rise{to{transform:none}}
+.hero-side{max-width:320px;opacity:0;animation:fade 1.2s .8s var(--ease) forwards}
+.hero-side p{color:#ddd5c7;font-size:.95rem;margin:1rem 0 1.6rem}
+@keyframes fade{to{opacity:1}}
+.scroll-cue{position:absolute;z-index:2;left:50%;bottom:2.2rem;transform:translateX(-50%);width:1px;height:56px;background:var(--line);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;inset:0;background:var(--gold);animation:cue 2.2s infinite var(--ease)}
+@keyframes cue{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
+/* reveal utilities */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+.clip>*{clip-path:inset(100% 0 0 0);transition:clip-path 1.6s var(--ease)}
+.clip img{transform:scale(1.25);transition:transform 2s var(--ease)}
+.clip.in>*{clip-path:inset(0 0 0 0)}
+.clip.in img{transform:scale(1)}
+
+/* intro */
+.intro{padding:20vh 0 14vh}
+.statement{font-family:var(--serif);font-size:clamp(2rem,4.6vw,4.2rem);line-height:1.12;max-width:20ch;margin-top:1.8rem}
+.statement .w{opacity:.14;transition:opacity .4s}
+.statement .w.on{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12vh;border-top:1px solid var(--line)}
+.stat{padding:2.2rem 0 0;border-right:1px solid var(--line);padding-left:2rem}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,5vw,4.4rem);line-height:1;color:var(--ivory)}
+.stat>span{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* services */
+.services{padding:8vh 0 18vh}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:4rem}
+.sec-head h2{font-size:clamp(2.6rem,6vw,5.4rem);max-width:12ch}
+.sec-head p{max-width:340px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.card{position:relative;display:block}
+.card:nth-child(2){margin-top:8rem}
+.card .img{aspect-ratio:3/4;overflow:hidden;position:relative}
+.card .img img{transition:transform 1.4s var(--ease)}
+.card:hover .img img{transform:scale(1.06)}
+.card .num{position:absolute;top:1.2rem;left:1.2rem;z-index:2;font-size:.7rem;letter-spacing:.3em;color:var(--ivory)}
+.card h3{font-size:2.2rem;margin-top:1.4rem}
+.card p{color:var(--muted);font-size:.92rem;margin-top:.4rem;max-width:34ch}
+.card .more{display:inline-block;margin-top:1rem;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid currentColor;padding-bottom:3px}
+
+/* horizontal gallery */
+.hscroll{position:relative;height:340vh}
+.hsticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hhead{padding:0 4vw;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.4rem}
+.hhead h2{font-size:clamp(2.4rem,5vw,4.4rem)}
+.hcount{font-family:var(--serif);font-size:1.4rem;color:var(--muted)}
+.htrack{display:flex;gap:2vw;padding:0 4vw;will-change:transform}
+.hitem{flex:0 0 auto;height:62vh;aspect-ratio:3/4;overflow:hidden;position:relative}
+.hitem:nth-child(odd){margin-top:6vh}
+.hitem img{transform:scale(1.12)}
+.hitem figcaption{position:absolute;left:1rem;bottom:1rem;font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;background:rgba(14,12,10,.55);padding:.4rem .7rem;backdrop-filter:blur(6px)}
+
+/* feature story */
+.story{padding:20vh 0;background:var(--ink-2)}
+.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:6vw;align-items:center}
+.story-media{position:relative;height:110vh;max-height:980px}
+.story-media .a{position:absolute;left:0;top:0;width:72%;height:78%;overflow:hidden}
+.story-media .b{position:absolute;right:0;bottom:0;width:48%;height:52%;overflow:hidden;border:10px solid var(--ink-2)}
+.story-media .par{height:120%;margin-top:-10%;will-change:transform}
+.story-copy h2{font-size:clamp(2.6rem,5.2vw,5rem);margin:1.4rem 0 1.6rem}
+.story-copy p{color:#cfc6b7;max-width:44ch;margin-bottom:1.2rem}
+.story-copy .btn{margin-top:1.4rem}
+
+/* quince pinned stack */
+.quince{position:relative}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
+.q-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
+.q-sticky h2{font-size:clamp(2.8rem,6vw,5.6rem);margin:1.4rem 0 1.4rem}
+.q-sticky p{color:#cfc6b7;max-width:40ch}
+.q-list{list-style:none;margin-top:2.4rem;border-top:1px solid var(--line)}
+.q-list li{padding:1rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:.85rem;letter-spacing:.08em;color:var(--muted);transition:color .5s,padding .5s}
+.q-list li.active{color:var(--ivory);padding-left:.8rem}
+.q-images{padding:14vh 0}
+.q-img{height:88vh;margin-bottom:12vh;overflow:hidden;position:relative}
+.q-img:last-child{margin-bottom:0}
+
+/* masonry */
+.gallery{padding:20vh 0 16vh}
+.masonry{columns:3;column-gap:1.4rem}
+.masonry figure{break-inside:avoid;margin-bottom:1.4rem;overflow:hidden}
+.masonry figure img{height:auto;transition:transform 1.2s var(--ease),filter 1.2s}
+.masonry figure:hover img{transform:scale(1.04)}
+
+/* process */
+.process{padding:14vh 0 20vh;border-top:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:5rem}
+.step{border-top:1px solid var(--gold);padding-top:1.6rem}
+.step span{font-family:var(--serif);font-size:3rem;color:var(--gold);line-height:1}
+.step h3{font-size:1.7rem;margin:.8rem 0 .6rem}
+.step p{color:var(--muted);font-size:.9rem}
+
+/* cta */
+.cta{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.cta-bg{position:absolute;inset:-10% 0;will-change:transform}
+.cta-bg img{object-position:50% 40%}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,12,10,.94) 0%,rgba(14,12,10,.7) 50%,rgba(14,12,10,.25) 100%)}
+.cta .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+.cta h2{font-size:clamp(3rem,7vw,6.4rem);margin:1.4rem 0}
+.cta p{color:#d8cfc1;max-width:40ch}
+.phone{display:inline-block;margin-top:2rem;font-family:var(--serif);font-size:2.2rem;border-bottom:1px solid var(--gold)}
+form{background:rgba(14,12,10,.6);backdrop-filter:blur(16px);border:1px solid var(--line);padding:2.4rem;display:grid;gap:1.3rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+label{font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);display:grid;gap:.5rem}
+input,select,textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ivory);font:inherit;font-size:1rem;padding:.5rem 0;outline:none;transition:border-color .4s}
+select option{background:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+textarea{resize:none;height:80px}
+form .btn{justify-content:center;cursor:pointer;font-family:var(--sans)}
+.sent{display:none;text-align:center;padding:2rem 0}
+.sent h3{font-size:2.2rem;margin-bottom:.6rem}
+
+footer{padding:5rem 0 2.5rem;border-top:1px solid var(--line)}
+.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.foot .big{font-family:var(--serif);font-size:clamp(3rem,9vw,8rem);letter-spacing:.1em;line-height:.9;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(244,238,228,.35)}
+.foot-links{display:flex;gap:2rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.credit{margin-top:3rem;display:flex;justify-content:space-between;font-size:.72rem;color:#6f675c;letter-spacing:.08em}
+
+@media (max-width:900px){
+  .links{display:none}
+  .hero-content{flex-direction:column;align-items:flex-start}
+  .stats{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line);padding:1.6rem 0}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .cards{grid-template-columns:1fr}.card:nth-child(2){margin-top:0}
+  .hitem{height:56vh}
+  .story-grid,.q-grid,.cta .wrap{grid-template-columns:1fr}
+  .story-media{height:80vh}
+  .q-sticky{position:relative;height:auto;padding-top:14vh}
+  .q-images{padding:6vh 0}.q-img{height:70vh;margin-bottom:5vh}
+  .masonry{columns:2;column-gap:.8rem}.masonry figure{margin-bottom:.8rem}
+  .steps{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr}
+  .credit{flex-direction:column;gap:.6rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}.clip>*{clip-path:none!important}
+  .hero h1 .line span,.clip img,.hero-media img{transform:none}
+  .hero-side{opacity:1}.statement .w{opacity:1}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo">Clem<small>Photography</small></a>
+  <div class="links">
+    <a href="#services">Services</a>
+    <a href="#gallery">Portfolio</a>
+    <a href="#quince">Quinceañeras</a>
+    <a href="#process">Experience</a>
+  </div>
+  <a href="#contact" class="btn">Check your date</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-media" id="heroMedia"><img src="img/15.jpg" alt="Bride under her veil at sunset on a Florida beach"></div>
+  <div class="hero-content">
+    <h1><span class="line"><span>Elegance,</span></span><span class="line"><span><em>remembered.</em></span></span></h1>
+    <div class="hero-side">
+      <span class="eyebrow">Florida &amp; Destination</span>
+      <p>Luxury wedding, quinceañera and portrait photography, crafted over 20 years behind the lens.</p>
+      <a href="#contact" class="btn solid">Reserve your date →</a>
+    </div>
+  </div>
+  <div class="scroll-cue"></div>
+</header>
+
+<section class="intro wrap">
+  <span class="eyebrow reveal">The Studio</span>
+  <p class="statement" id="statement">Every celebration has a once-in-a-lifetime light. For twenty years, my work has been finding it — and turning the moments you'll want to hold forever into portraits that feel like art.</p>
+  <div class="stats">
+    <div class="stat reveal"><b><span class="count" data-to="20">0</span>+</b><span>Years of experience</span></div>
+    <div class="stat reveal d1"><b><span class="count" data-to="12">0</span>K+</b><span>Moments shared</span></div>
+    <div class="stat reveal d2"><b>FL</b><span>&amp; destination weddings</span></div>
+  </div>
+</section>
+
+<section class="services wrap" id="services">
+  <div class="sec-head">
+    <h2 class="reveal">Three ways to be <em>seen</em></h2>
+    <p class="reveal d1">Whether it's your wedding day, her fifteenth or a portrait session, every shoot gets the same lighting, direction and care.</p>
+  </div>
+  <div class="cards">
+    <a href="#contact" class="card reveal">
+      <div class="img clip"><span class="num">01</span><img src="img/02.jpg" alt="Bride beneath a floral arch at sunset"></div>
+      <h3>Weddings</h3>
+      <p>From intimate beach ceremonies to grand ballrooms, documented with an editorial eye.</p>
+      <span class="more">Enquire</span>
+    </a>
+    <a href="#quince" class="card reveal d1">
+      <div class="img clip"><span class="num">02</span><img src="img/06.jpg" alt="Quinceañera in a pink gown under a garden gazebo"></div>
+      <h3>Quinceañeras</h3>
+      <p>Her XV, styled like a magazine cover: gowns, tiaras, and the story only she can tell.</p>
+      <span class="more">Explore</span>
+    </a>
+    <a href="#contact" class="card reveal d2">
+      <div class="img clip"><span class="num">03</span><img src="img/12.jpg" alt="Little girl among floating bubbles at dusk"></div>
+      <h3>Luxury Portraits</h3>
+      <p>Family, children and personal portraits with the same polish as our weddings.</p>
+      <span class="more">Book a session</span>
+    </a>
+  </div>
+</section>
+
+<section class="hscroll" id="gallery">
+  <div class="hsticky">
+    <div class="hhead"><h2 class="reveal">Selected <em>moments</em></h2><span class="hcount" id="hcount">01 / 08</span></div>
+    <div class="htrack" id="htrack">
+      <figure class="hitem"><img src="img/05.jpg" alt=""><figcaption>Gulf Coast</figcaption></figure>
+      <figure class="hitem"><img src="img/16.jpg" alt=""><figcaption>XV · Viola</figcaption></figure>
+      <figure class="hitem"><img src="img/09.jpg" alt=""><figcaption>Riverside</figcaption></figure>
+      <figure class="hitem"><img src="img/18.jpg" alt=""><figcaption>Masquerade XV</figcaption></figure>
+      <figure class="hitem"><img src="img/13.jpg" alt=""><figcaption>Golden Hour</figcaption></figure>
+      <figure class="hitem"><img src="img/20.jpg" alt=""><figcaption>Quince Portrait</figcaption></figure>
+      <figure class="hitem"><img src="img/14.jpg" alt=""><figcaption>Garden Steps</figcaption></figure>
+      <figure class="hitem"><img src="img/11.jpg" alt=""><figcaption>Little Princess</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="story-media">
+      <div class="a clip"><div class="par" data-speed="-0.08"><img src="img/01.jpg" alt="Couple embracing on a wooden dock surrounded by trees"></div></div>
+      <div class="b clip"><div class="par" data-speed="0.1"><img src="img/03.jpg" alt="Couple kissing on garden steps"></div></div>
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow reveal">Weddings</span>
+      <h2 class="reveal d1">Less posing.<br><em>More feeling.</em></h2>
+      <p class="reveal d2">I guide you gently, then step back and let the day unfold. The quiet glances, the laughter between vows, the last light over the Gulf.</p>
+      <p class="reveal d2">You'll get a timeless gallery you can pass down, not just a folder of pictures.</p>
+      <a href="#contact" class="btn reveal d3">Plan your wedding →</a>
+    </div>
+  </div>
+</section>
+
+<section class="quince wrap" id="quince">
+  <div class="q-grid">
+    <div class="q-sticky">
+      <span class="eyebrow">Quinceañeras</span>
+      <h2>Her fifteen,<br><em>written in light.</em></h2>
+      <p>Una quinceañera llena de elegancia. From the gown to the gazebo, each session is planned around her personality, her talents and her dreams.</p>
+      <ul class="q-list" id="qlist">
+        <li class="active"><span>Concept &amp; styling</span><span>I</span></li>
+        <li><span>Location scouting</span><span>II</span></li>
+        <li><span>Editorial session</span><span>III</span></li>
+        <li><span>Heirloom album</span><span>IV</span></li>
+      </ul>
+    </div>
+    <div class="q-images">
+      <div class="q-img clip" data-step="0"><img src="img/04.jpg" alt="Quinceañera playing viola between stone columns"></div>
+      <div class="q-img clip" data-step="1"><img src="img/19.jpg" alt="Quinceañera in a ballgown inside a gazebo"></div>
+      <div class="q-img clip" data-step="2"><img src="img/17.jpg" alt="Quinceañera in a blue lace mask"></div>
+      <div class="q-img clip" data-step="3"><img src="img/07.jpg" alt="Quinceañera playing viola by a fountain"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery wrap">
+  <div class="sec-head">
+    <h2 class="reveal">The <em>portfolio</em></h2>
+    <p class="reveal d1">A glimpse of recent sessions across Fort Myers, Stuart and the Florida coast.</p>
+  </div>
+  <div class="masonry">
+    <figure class="clip"><img src="img/08.jpg" alt=""></figure>
+    <figure class="clip"><img src="img/10.jpg" alt=""></figure>
+    <figure class="clip"><img src="img/18.jpg" alt=""></figure>
+    <figure class="clip"><img src="img/05.jpg" alt=""></figure>
+    <figure class="clip"><img src="img/20.jpg" alt=""></figure>
+    <figure class="clip"><img src="img/14.jpg" alt=""></figure>
+  </div>
+</section>
+
+<section class="process wrap" id="process">
+  <span class="eyebrow reveal">The Experience</span>
+  <h2 class="reveal d1" style="font-size:clamp(2.6rem,6vw,5.4rem);margin-top:1.2rem;max-width:14ch">Effortless, from <em>hello</em> to heirloom.</h2>
+  <div class="steps">
+    <div class="step reveal"><span>01</span><h3>Enquire</h3><p>Tell me your date, venue and vision. I'll confirm availability within 24 hours.</p></div>
+    <div class="step reveal d1"><span>02</span><h3>Plan</h3><p>We map out locations, timing and styling so the day feels relaxed.</p></div>
+    <div class="step reveal d2"><span>03</span><h3>Celebrate</h3><p>I'll direct the portraits and capture everything else as it happens.</p></div>
+    <div class="step reveal d3"><span>04</span><h3>Treasure</h3><p>Your hand-edited gallery arrives ready to share, print and pass down.</p></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-bg" id="ctaBg"><img src="img/13.jpg" alt=""></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">Now booking</span>
+      <h2 class="reveal d1">Let's check <em>your date.</em></h2>
+      <p class="reveal d2">Dates fill fast in peak season. Send a few details and I'll reply personally.</p>
+      <a href="tel:+17862731920" class="phone reveal d3">786.273.1920</a>
+    </div>
+    <form id="form" class="reveal d2">
+      <div id="fields" style="display:grid;gap:1.3rem">
+        <div class="row">
+          <label>Your name<input required placeholder="Full name"></label>
+          <label>Email<input type="email" required placeholder="you@email.com"></label>
+        </div>
+        <div class="row">
+          <label>Occasion<select><option>Wedding</option><option>Quinceañera</option><option>Portrait session</option><option>Destination wedding</option></select></label>
+          <label>Event date<input type="date"></label>
+        </div>
+        <label>Tell me about it<textarea placeholder="Venue, vision, anything you'd love captured"></textarea></label>
+        <button class="btn solid" type="submit">Send enquiry →</button>
+      </div>
+      <div class="sent" id="sent"><h3>Thank you.</h3><p style="color:var(--muted)">Your enquiry is on its way. Expect a reply within 24 hours.</p></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="big">Clem</div>
+      <div class="foot-links"><a href="https://instagram.com/clemphotography1" target="_blank" rel="noopener">Instagram</a><a href="tel:+17862731920">Call</a><a href="#top">Back to top ↑</a></div>
+    </div>
+    <div class="credit"><span>© Clem Photography · Luxury Wedding &amp; Quinceañera Photography · Florida</span><span>Homepage concept by Toby Studio</span></div>
+  </div>
+</footer>
+
+<script>
+(()=>{
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // split statement into words
+  const st = document.getElementById('statement');
+  st.innerHTML = st.textContent.trim().split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ');
+  const words = [...st.querySelectorAll('.w')];
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);
+      e.target.querySelectorAll?.('.count').forEach(countUp); }
+  }),{threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal,.clip').forEach(el=>io.observe(el));
+
+  function countUp(el){
+    const to=+el.dataset.to; if(reduce){el.textContent=to;return}
+    const t0=performance.now();
+    const tick=t=>{const p=Math.min((t-t0)/1600,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};
+    requestAnimationFrame(tick);
+  }
+
+  // quince step sync
+  const items=[...document.querySelectorAll('#qlist li')];
+  const qio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){items.forEach(li=>li.classList.remove('active'));items[+e.target.dataset.step]?.classList.add('active')}
+  }),{threshold:.55});
+  document.querySelectorAll('.q-img').forEach(el=>qio.observe(el));
+
+  const nav=document.getElementById('nav'), prog=document.getElementById('progress');
+  const hero=document.getElementById('heroMedia'), cta=document.getElementById('ctaBg');
+  const hs=document.querySelector('.hscroll'), track=document.getElementById('htrack'), hcount=document.getElementById('hcount');
+  const hitems=[...track.children];
+  const pars=[...document.querySelectorAll('.par')];
+
+  function frame(){
+    const y=scrollY, vh=innerHeight, max=document.documentElement.scrollHeight-vh;
+    nav.classList.toggle('scrolled', y>60);
+    prog.style.transform=`scaleX(${max?y/max:0})`;
+    if(reduce) return;
+    // hero parallax
+    if(y<vh) hero.style.transform=`translateY(${y*.35}px)`;
+    // statement words
+    const r=st.getBoundingClientRect();
+    const p=Math.min(Math.max((vh*.85-r.top)/(r.height+vh*.35),0),1);
+    const n=Math.round(p*words.length);
+    words.forEach((w,i)=>w.classList.toggle('on',i<n));
+    // horizontal gallery
+    const hr=hs.getBoundingClientRect();
+    const hp=Math.min(Math.max(-hr.top/(hr.height-vh),0),1);
+    const dist=track.scrollWidth-innerWidth;
+    track.style.transform=`translateX(${-hp*dist}px)`;
+    hitems.forEach(it=>{const b=it.getBoundingClientRect();const c=(b.left+b.width/2-innerWidth/2)/innerWidth;it.firstElementChild.style.transform=`scale(1.12) translateX(${c*-6}%)`});
+    hcount.textContent=String(Math.min(hitems.length,Math.floor(hp*hitems.length)+1)).padStart(2,'0')+' / '+String(hitems.length).padStart(2,'0');
+    // parallax blocks
+    pars.forEach(el=>{const b=el.parentElement.getBoundingClientRect();const c=b.top+b.height/2-vh/2;el.style.transform=`translateY(${c*+el.dataset.speed}px)`});
+    // cta bg
+    const cr=cta.parentElement.getBoundingClientRect();
+    if(cr.top<vh&&cr.bottom>0) cta.style.transform=`translateY(${(cr.top)*-.12}px)`;
+  }
+  let ticking=false;
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{frame();ticking=false})}},{passive:true});
+  addEventListener('resize',frame); frame();
+
+  document.getElementById('form').addEventListener('submit',e=>{
+    e.preventDefault();document.getElementById('fields').style.display='none';document.getElementById('sent').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>
